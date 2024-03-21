@@ -1,3 +1,5 @@
+// only uses keyboard controlls atm (W,A,S,D)
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
