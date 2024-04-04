@@ -1,0 +1,831 @@
+fileFormatVersion: 2
+guid: 59deda398a75c9e4281df70c3409c314
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: evilRat_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae3967b6f0418b4c9f28107a5fe824f
+      internalID: 1246117279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 151
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1e6ef3bd6bf7c49baa9f50ad9c1980
+      internalID: 1702699969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 152
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143bb8d252fc11e43aadacbc5b671e44
+      internalID: -2028424102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_3
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 151.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4076695ef9a13f43b4b0b18a2fc2af0
+      internalID: -562148004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_4
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 151.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6db8145d2561cf4fb714493db8a9767
+      internalID: -1191815503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_5
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 151.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d8b793a030eb54d919f221407a0cc8
+      internalID: -474869345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_6
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 151.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 471c272157b5d2b4fa09acf9b070452f
+      internalID: -703671103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_7
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 151.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad49b64570bf9449bb0e83a5eadabaa
+      internalID: 100000040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91f39948d96d7945a4ef91605dabeae
+      internalID: -10892878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_9
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e63ae6297a14d8488be220eb232a642
+      internalID: -663489236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9854bd6ca04c71c4eac6bf3fe965e9fc
+      internalID: -326848601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb24cad5cdbff1d43af32ca30e50d4e1
+      internalID: 1209057853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbdac04ba8c3a224b87c717502775247
+      internalID: 1935147169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_13
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47aae5901bb3e0642b7aecd8e13f9d4a
+      internalID: 399625369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_14
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb358553ef82ebd4c895061e1b612063
+      internalID: 876946751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_15
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 101.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f7593d7bbc641478ee836c58d0d508
+      internalID: -552552799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce35863c48ce1974ab540b8796e283a9
+      internalID: -1558390701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_17
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4590f99cbb644fe4891209bfaffe63b9
+      internalID: 940273301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_18
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29371afc93865240bad92723b32eccd
+      internalID: -229374892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_19
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0301e22b527f5b43942957ed03b75f3
+      internalID: -689103258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_20
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af25760cf573f6f4fbc3781d328ae716
+      internalID: -2144893795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_21
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61347ad0dc225f84290097435d5dae82
+      internalID: 1037871156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_22
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a5f05ee52daa34469e5799f08fb8fb9
+      internalID: 862840294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_23
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 51.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c5d19b8f48cef4bbab2cc6d688b0f9
+      internalID: -393575942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d990756a2cd279e4eb0f44654371ae85
+      internalID: 1886493177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_25
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba47254dfa8756341b6bebe578576893
+      internalID: -326578822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_26
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fc496793916964c93afd05ab414659
+      internalID: 343206993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_27
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d21ad0ee9c50c4290360daa4953bbc
+      internalID: 358165796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_28
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa3e87da820d4243990a04c1012aa0c
+      internalID: -626688683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_29
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd93281916522148946876e456a8be4
+      internalID: 1587681965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_30
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f276b4ff025f443973edc21bdf6276
+      internalID: 1654557121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: evilRat_31
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 1.5
+        width: 74.875
+        height: 50.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bd7476fbfbc714286e6d9b50a5f242
+      internalID: 1370734726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      evilRat_0: 1246117279
+      evilRat_1: 1702699969
+      evilRat_10: -326848601
+      evilRat_11: 1209057853
+      evilRat_12: 1935147169
+      evilRat_13: 399625369
+      evilRat_14: 876946751
+      evilRat_15: -552552799
+      evilRat_16: -1558390701
+      evilRat_17: 940273301
+      evilRat_18: -229374892
+      evilRat_19: -689103258
+      evilRat_2: -2028424102
+      evilRat_20: -2144893795
+      evilRat_21: 1037871156
+      evilRat_22: 862840294
+      evilRat_23: -393575942
+      evilRat_24: 1886493177
+      evilRat_25: -326578822
+      evilRat_26: 343206993
+      evilRat_27: 358165796
+      evilRat_28: -626688683
+      evilRat_29: 1587681965
+      evilRat_3: -562148004
+      evilRat_30: 1654557121
+      evilRat_31: 1370734726
+      evilRat_4: -1191815503
+      evilRat_5: -474869345
+      evilRat_6: -703671103
+      evilRat_7: 100000040
+      evilRat_8: -10892878
+      evilRat_9: -663489236
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
