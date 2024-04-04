@@ -12,28 +12,23 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     private bool isPaused = false;
     public GameObject Coin;
-    public GameObject Gun;
-    public GameObject Bullet; // Reference to the bullet prefab
-    public float bulletSpeed = 10f; // Speed of the bullet
-    public GameObject chest;
-    public TextMeshProUGUI chestText;
+    public GameObject GreenOozePrefab; // Reference to the GreenOoze prefab
+    public GameObject chestClose;
     public float coinSpawnRadius = 5.0F;
     private int totalCoins;
-    private GameObject gunInstance;
-    private bool isNearChest = false;
-    private bool gunSpawned = false;
+    public GameObject gunFill; // Reference to the gun's fill UI element or sprite renderer
 
     public const int maxHealth = 100;
     public int currentHealth;
 
-    public HealthBar HealthBar; // Reference to HealthBar script
-    public StaminaBar StaminaBar; // Reference to StaminaBar script
+    public HealthBar HealthBar;
+    public StaminaBar StaminaBar;
 
     void Start()
     {
         currentHealth = maxHealth;
-        HealthBar.SetMaxHealth(maxHealth); // Set max health in HealthBar script
-        StaminaBar.SetMaxStamina(StaminaBar.maxStamina); // Set max stamina in StaminaBar script
+        HealthBar.SetMaxHealth(maxHealth);
+        StaminaBar.SetMaxStamina(StaminaBar.maxStamina);
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
@@ -88,7 +83,8 @@ public class PlayerControls : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            bool isSprinting = Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 0; // Check if sprinting and enough stamina
+            // Check for sprinting with keyboard or controller
+            bool isSprinting = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton0)) && StaminaBar.currentStamina > 0;
             float currentSpeed = isSprinting ? movementSpeed * sprintSpeedMultiplier : movementSpeed;
 
             if (isSprinting)
@@ -104,50 +100,13 @@ public class PlayerControls : MonoBehaviour
 
             Vector3 movement = new Vector3(horizontalInput, verticalInput, 0);
             transform.position += movement * Time.deltaTime * currentSpeed;
-
-            // Shoot bullets if gun is attached and "Y" key is pressed
-            if (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.JoystickButton3))
-            {
-                if (gunInstance != null)
-                {
-                    ShootBullet();
-                }
-            }
-
-            // Example of taking damage (can be called from other methods)
-            if (Input.GetKeyDown(KeyCode.Space)) // Example key to take damage
-            {
-                TakeDamage(10); // Example damage amount
-            }
         }
     }
-
-  void ShootBullet()
-    {
-        GameObject bullet = Instantiate(Bullet, gunInstance.transform.position, Quaternion.identity);
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.velocity = gunInstance.transform.right * bulletSpeed;
-
-        // Set bullet's gravity scale to zero
-        bulletRb.gravityScale = 0f;
-
-        // Set bullet's collision detection to Continuous
-        bulletRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-        // Ignore collision between bullet and player
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
-        // Set bullet lifetime
-        Destroy(bullet, 2.0f); // Bullet will be destroyed after 2 seconds
-    }
-
-
-
 
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        HealthBar.SetHealth(currentHealth); // Update health in HealthBar script
+        HealthBar.SetHealth(currentHealth);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -159,56 +118,25 @@ public class PlayerControls : MonoBehaviour
             PrintInventory();
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Gun") && gunSpawned == true)  // Check if gun has not been spawned yet
-        {
-            AttachGun();
-        }
-        else if (collision.gameObject.CompareTag("ChestClose") && !gunSpawned)  // Check if gun has not been spawned yet
-        {
-            Debug.Log("Collided with chest");
-            if (inventory.Contains("Coin"))
-            {
-                Debug.Log("Spawning gun");
-                SpawnGun();
-                gunSpawned = true;  // Set gunSpawned flag to true
-            }
-            else
-            {
-                Debug.Log("No coin in inventory");
-            }
-        }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(20);
         }
-    }
-
-    void SpawnGun()
-    {
-        Vector2 randomSpawnPoint = Random.insideUnitCircle * coinSpawnRadius;
-        Vector3 spawnPoint = new Vector3(transform.position.x + randomSpawnPoint.x, transform.position.y + randomSpawnPoint.y, -1);
-
-        gunInstance = Instantiate(Gun, spawnPoint, Quaternion.identity);
-        gunInstance.tag = "Gun";
-
-        Renderer gunRenderer = gunInstance.GetComponent<Renderer>();
-        if (gunRenderer != null)
+        else if (collision.gameObject.CompareTag("GreenOoze"))
         {
-            gunRenderer.sortingLayerName = "Default";
-            gunRenderer.sortingOrder = 1;
+            string itemName = collision.gameObject.tag; 
+            inventory.Add(itemName); 
+            PrintInventory(); 
+            Destroy(collision.gameObject); 
+
+            // Update the gun's fill color to green
+            UpdateGunFillColor(Color.green);
         }
-    }
-
-    void AttachGun()
-    {
-        if (gunInstance == null) return;
-
-        gunInstance.transform.SetParent(this.transform);
-
-        Vector3 gunPosition = new Vector3(0, 0.5f, 0);
-        gunInstance.transform.localPosition = gunPosition;
-
-        gunInstance.SetActive(true);
+        else if (collision.gameObject.CompareTag("ChestClose") && inventory.Contains("Coin"))
+        {
+            Debug.Log("Collided with chest and have at least one coin in inventory");
+            SpawnGreenOoze();
+        }
     }
 
     void PrintInventory()
@@ -217,6 +145,46 @@ public class PlayerControls : MonoBehaviour
         foreach (string item in inventory)
         {
             Debug.Log("- " + item);
+        }
+    }
+
+    void SpawnGreenOoze()
+    {
+        if(GameObject.FindGameObjectWithTag("GreenOoze") != null)
+        {
+            Debug.Log("GreenOoze already spawned!");
+            return;
+        }
+
+        float spawnDistanceToLeft = 1.0f; 
+
+        Vector3 playerPosition = transform.position; 
+        Vector3 spawnPoint = new Vector3(playerPosition.x - spawnDistanceToLeft, playerPosition.y, -1);
+
+        GameObject greenOoze = Instantiate(GreenOozePrefab, spawnPoint, Quaternion.identity);
+        greenOoze.tag = "GreenOoze";
+
+        Renderer oozeRenderer = greenOoze.GetComponent<Renderer>();
+        if (oozeRenderer != null)
+        {
+            oozeRenderer.sortingLayerName = "Default";
+            oozeRenderer.sortingOrder = 1;
+        }
+    }
+
+    void UpdateGunFillColor(Color color)
+    {
+        if (gunFill != null)
+        {
+            // Check if the reference is pointing to a UI Image or Sprite Renderer
+            if (gunFill.GetComponent<SpriteRenderer>() != null)
+            {
+                gunFill.GetComponent<SpriteRenderer>().color = color;
+            }
+            else if (gunFill.GetComponent<UnityEngine.UI.Image>() != null)
+            {
+                gunFill.GetComponent<UnityEngine.UI.Image>().color = color;
+            }
         }
     }
 }
