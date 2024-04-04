@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     private int totalCoins;
     public GameObject gunFill; // Reference to the gun's fill UI element or sprite renderer
 
+    private bool greenOozeSpawned = false;  // Flag to track if GreenOoze has been spawned
+
     public const int maxHealth = 100;
     public int currentHealth;
 
@@ -124,18 +126,19 @@ public class PlayerControls : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("GreenOoze"))
         {
-            string itemName = collision.gameObject.tag; 
-            inventory.Add(itemName); 
-            PrintInventory(); 
-            Destroy(collision.gameObject); 
+            string itemName = collision.gameObject.tag;
+            inventory.Add(itemName);
+            PrintInventory();
+            Destroy(collision.gameObject);
 
             // Update the gun's fill color to green
             UpdateGunFillColor(Color.green);
         }
-        else if (collision.gameObject.CompareTag("ChestClose") && inventory.Contains("Coin"))
+        else if (collision.gameObject.CompareTag("ChestClose") && inventory.Contains("Coin") && !greenOozeSpawned)
         {
             Debug.Log("Collided with chest and have at least one coin in inventory");
             SpawnGreenOoze();
+            greenOozeSpawned = true;  // Set the flag to true after spawning
         }
     }
 
@@ -156,10 +159,10 @@ public class PlayerControls : MonoBehaviour
             return;
         }
 
-        float spawnDistanceToLeft = 1.0f; 
+        float spawnDistanceToLeft = 5.0f;
 
-        Vector3 playerPosition = transform.position; 
-        Vector3 spawnPoint = new Vector3(playerPosition.x - spawnDistanceToLeft, playerPosition.y, -1);
+        Vector3 playerPosition = transform.position;
+        Vector3 spawnPoint = new Vector3(playerPosition.x - spawnDistanceToLeft, playerPosition.y, playerPosition.z);
 
         GameObject greenOoze = Instantiate(GreenOozePrefab, spawnPoint, Quaternion.identity);
         greenOoze.tag = "GreenOoze";
