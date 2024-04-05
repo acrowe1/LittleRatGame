@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -131,8 +132,6 @@ public class PlayerControls : MonoBehaviour
             PrintInventory();
             Destroy(collision.gameObject);
 
-            // Update the gun's fill color to green
-            UpdateGunFillColor(Color.green);
         }
         else if (collision.gameObject.CompareTag("ChestClose") && inventory.Contains("Coin") && !greenOozeSpawned)
         {
@@ -153,7 +152,7 @@ public class PlayerControls : MonoBehaviour
 
     void SpawnGreenOoze()
     {
-        if(GameObject.FindGameObjectWithTag("GreenOoze") != null)
+        if (GameObject.FindGameObjectWithTag("GreenOoze") != null)
         {
             Debug.Log("GreenOoze already spawned!");
             return;
@@ -175,19 +174,4 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    void UpdateGunFillColor(Color color)
-    {
-        if (gunFill != null)
-        {
-            // Check if the reference is pointing to a UI Image or Sprite Renderer
-            if (gunFill.GetComponent<SpriteRenderer>() != null)
-            {
-                gunFill.GetComponent<SpriteRenderer>().color = color;
-            }
-            else if (gunFill.GetComponent<UnityEngine.UI.Image>() != null)
-            {
-                gunFill.GetComponent<UnityEngine.UI.Image>().color = color;
-            }
-        }
-    }
 }
