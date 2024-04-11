@@ -1,58 +1,96 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))] // Automatically add a Rigidbody2D component if it doesn't exist
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour
 {
-    public float movementSpeed = 10.0f; // Movement speed of the enemy
+    public float movementSpeed = 10.0f;
+    private Transform playerTransform;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private Vector3 movement;
+    public int currentHealth;
+    public int maxHealth = 300;
+    public HealthBar enemyHealthBar;
 
-    private Transform playerTransform; // Reference to the player's transform
-    private Rigidbody2D rb; // Reference to the Rigidbody2D component
+    private PlayerControls playerControls;  // Reference to the PlayerControls script
+
+    public void Initialize(PlayerControls playerControls)
+    {
+        this.playerControls = playerControls;
+    }
 
     void Start()
     {
+        currentHealth = maxHealth;
+        Debug.Log("Current health: " + currentHealth);
+        enemyHealthBar.SetMaxHealth(maxHealth);
+
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        // Find the player's transform
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        animator = GetComponent<Animator>();
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
         {
-            playerTransform = player.transform;
+            playerTransform = playerObject.transform;
         }
         else
         {
             Debug.LogError("Player not found! Make sure the player GameObject is tagged with 'Player'.");
         }
-
-        // Get the Rigidbody2D component
-        rb = GetComponent<Rigidbody2D>();
-
-        // Set Rigidbody2D constraints to freeze rotation
-        if (rb != null)
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
     }
 
     void Update()
     {
-        // Check if playerTransform is not null before moving
         if (playerTransform != null)
         {
-            // Move towards the player
             MoveTowardsPlayer();
+            Animate();
         }
+    }
+
+    void Animate()
+    {
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
     }
 
     void MoveTowardsPlayer()
     {
-        // Calculate the direction from the enemy to the player
         Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-
-        // Move the enemy in the direction of the player
+        movement = new Vector3(directionToPlayer.x, directionToPlayer.y, 0);
         transform.position += directionToPlayer * movementSpeed * Time.deltaTime;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Current Health: " + currentHealth);
+        enemyHealthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Die();
+
+            if (playerControls != null)
+            {
+                playerControls.IncreaseScore(10);
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(GunController.bulletDamage);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }

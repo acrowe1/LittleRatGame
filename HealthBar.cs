@@ -4,34 +4,28 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
+    public Gradient gradient;
+    public Image fill;
 
-    public const int maxHealth = 100;
-    public int currentHealth;
-    private PlayerControls playerControls; // Reference to PlayerControls
-
-
-    void Start()
+    private void Start()
     {
-        currentHealth = maxHealth;
-        SetMaxHealth(maxHealth);
+        if (slider == null)
+        {
+            Debug.LogError("Slider reference is not set in HealthBar script!");
+        }
     }
 
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
         slider.value = health;
+        fill.color = gradient.Evaluate(1f);
     }
 
     public void SetHealth(int health)
     {
         slider.value = health;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+        Debug.Log("Health Bar Updated. Current Health: " + health);
     }
-
-public void TakeDamage(int damage)
-{
-    currentHealth -= damage;
-    SetHealth(currentHealth);
-    Debug.Log("HealthBar updated. Current Health: " + currentHealth); // Added debug statement
-}
-
 }
