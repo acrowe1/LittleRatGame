@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// Logic for the damage indicator numbers that fall from the healtbar when hit by an enemy
+// The red flashing that also happens is handled in the PlayerControls
 public class PopUpDamage : MonoBehaviour
 {
     public Vector2 InitialVelocity;

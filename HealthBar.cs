@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Controls the health bar slider/color 
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
@@ -26,6 +27,5 @@ public class HealthBar : MonoBehaviour
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
-        Debug.Log("Health Bar Updated. Current Health: " + health);
     }
 }
