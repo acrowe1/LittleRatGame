@@ -26,7 +26,6 @@ public class InventorySystem
 
     public bool AddToInventory(InventoryItemData itemToAdd, int amountToAdd)
     {
-        // Check if there is any slot with room left in its stack for the item
         if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot))
         {
             foreach (var slot in invSlot)
@@ -40,7 +39,6 @@ public class InventorySystem
             }
         }
 
-        // Check if there are any free slots available
         if (HasFreeSlot(out InventorySlot freeSlot))
         {
             freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
@@ -51,44 +49,34 @@ public class InventorySystem
         return false;
     }
 
-    public bool RemoveFromInventory(InventoryItemData itemToRemove, int amountToRemove, InventorySlot_UI uiSlot)
+    public bool RemoveFromInventory(InventoryItemData itemToRemove, int amountToRemove)
     {
-        // Check if the item exists in the inventory
         if (ContainsItem(itemToRemove, out List<InventorySlot> invSlot))
         {
             foreach (var slot in invSlot)
             {
-                if (slot.ItemData == itemToRemove)
+                if (slot.ItemData == itemToRemove && slot.StackSize > amountToRemove)
                 {
-                    // If there are enough items in the slot
-                    if (slot.StackSize >= amountToRemove)
-                    {
-                        slot.RemoveFromStack(amountToRemove);
-                        OnInventorySlotChanged?.Invoke(slot);
-                        Debug.Log("Amount left in stack: " + slot.StackSize);
-                        uiSlot.UpdateUISlot(slot); // Update the UI slot
-                        return true;
-                    }
-                    else
-                    {
-                        // If there are not enough items in the slot, remove all and continue
-                        amountToRemove -= slot.StackSize;
-                        slot.RemoveFromStack(slot.StackSize);
-                        OnInventorySlotChanged?.Invoke(slot);
-                        Debug.Log("Amount left in stack: 0");
-                        uiSlot.UpdateUISlot(slot); // Update the UI slot
-                    }
+                    slot.RemoveFromStack(amountToRemove);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    return true;
+                }
+                else if (slot.ItemData == itemToRemove && slot.StackSize <= amountToRemove)
+                {
+                    amountToRemove -= slot.StackSize;
+                    slot.ClearSlot();
+                    OnInventorySlotChanged?.Invoke(slot);
                 }
             }
         }
 
-        return false; // Item not found or not enough quantity to remove
+        return false; 
     }
+
 
     public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
-        // Debug.Log("invSlot Count: " + invSlot.Count);
         return invSlot.Count > 0;
     }
 
