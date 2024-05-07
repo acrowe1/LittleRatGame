@@ -1,0 +1,200 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InventoryManager : MonoBehaviour
+{
+    public GameObject InventoryMenu;
+    private bool menuActivated;
+    public ItemSlot[] itemSlot;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && menuActivated) {
+            Time.timeScale = 1;
+            InventoryMenu.SetActive(false);
+            menuActivated = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && !menuActivated) {
+            Time.timeScale = 0;
+            InventoryMenu.SetActive(true);
+            menuActivated = true;
+        }
+    }
+
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription) {
+        for (int i = 0; i < itemSlot.Length; i++) {
+            if (itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0) {
+                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+                if (leftOverItems > 0) {
+                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                }
+                return leftOverItems;
+            }
+        }
+        return quantity;
+    }
+
+    public void DeselectAllSlots() {
+        for (int i = 0; i < itemSlot.Length; i++) {
+            itemSlot[i].selectedShader.SetActive(false);
+            itemSlot[i].thisItemSelected = false;
+        }
+    }
+}
+
+//ITEM 
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Item : MonoBehaviour
+{
+    [SerializeField]
+    private string itemName;
+
+    [SerializeField]
+    private int quantity;
+
+    [SerializeField]
+    private Sprite sprite;
+
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
+
+    private InventoryManager inventoryManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+            if (leftOverItems <= 0) {
+                Destroy(gameObject);
+            } else {
+                quantity = leftOverItems;
+            }
+            Destroy(gameObject);
+        }
+    }
+}
+
+// ITEMSLOT
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
+{
+
+    //===ITEM DATA===//
+    public string itemName;
+    public int quantity;
+    public Sprite itemSprite;
+    public bool isFull;
+    public string itemDescription;
+    public Sprite emptySprite;
+
+    [SerializeField]
+    private int maxNumberOfItems;
+
+    //===ITEM SLOT===//
+    [SerializeField]
+    private TMP_Text quantityText;
+
+    [SerializeField]
+    private Image itemImage;
+
+
+    //===ITEM DESCRIPTION SLOT===//
+    public Image itemDescriptionImage;
+    public TMP_Text itemDescriptionNameText;
+    public TMP_Text itemDescriptionText;
+
+    public GameObject selectedShader;
+    public bool thisItemSelected;
+
+    private InventoryManager inventoryManager;
+
+    private void Start() {
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+    }
+
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription) {
+        //Check to see if the slot is already full
+        if (isFull) {
+            return quantity;
+        }
+
+        //Update Name
+        this.itemName = itemName;
+
+        //Update Image
+        this.itemSprite = itemSprite;
+        itemImage.sprite = itemSprite;
+        //itemImage.enabled = true;
+
+        //Update Description
+        this.itemDescription = itemDescription;
+
+        //Update Quantity
+        this.quantity += quantity;
+        if(this.quantity >= maxNumberOfItems) {
+            quantityText.text = quantity.ToString();
+            quantityText.enabled = true;
+            isFull = true;
+        //Return left overs
+        int extraItems = this.quantity - maxNumberOfItems;
+        this.quantity = maxNumberOfItems;
+        return extraItems;
+        } 
+
+        //Update quantity text
+        quantityText.text = this.quantity.ToString();
+        quantityText.enabled = true;
+
+        return 0;
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            OnLeftClick();
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Right) {
+            OnRightClick();
+        }
+    } 
+
+    public void OnLeftClick() {
+        inventoryManager.DeselectAllSlots();
+        selectedShader.SetActive(true);
+        thisItemSelected = true;
+        itemDescriptionNameText.text = itemName;
+        itemDescriptionText.text = itemDescription;
+        itemDescriptionImage.sprite = itemSprite;
+        if (itemDescriptionImage.sprite == null) {
+            itemDescriptionImage.sprite = emptySprite;
+        }
+    }
+
+    public void OnRightClick() {
+
+    }
+}
