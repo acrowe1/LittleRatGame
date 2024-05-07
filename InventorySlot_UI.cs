@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class InventorySlot_UI : MonoBehaviour
 {
@@ -64,14 +65,5 @@ public class InventorySlot_UI : MonoBehaviour
         itemSprite.sprite = null;
         itemSprite.color = Color.clear;
         itemCount.text = "";
-    }
-
-    public void DecreaseStackSize()
-    {
-        if (assignedInventorySlot != null)
-        {
-            assignedInventorySlot.RemoveFromStack(1);
-            UpdateUISlot();
-        }
     }
 }
